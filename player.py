@@ -1,4 +1,5 @@
 import pygame
+from projectile import BouledeFeu 
 
 # Création d'une classe joueur
 class Joueur(pygame.sprite.Sprite):
@@ -12,6 +13,10 @@ class Joueur(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = 250
         self.rect.y = 300
+        self.all_projectiles = pygame.sprite.Group()
+
+    def boule_de_feu_1(self, orientation):
+        self.all_projectiles.add(BouledeFeu(self, orientation))
 
     def deplacement_droite(self):
         self.rect.x += self.vitesse
